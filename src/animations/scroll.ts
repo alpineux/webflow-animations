@@ -35,7 +35,7 @@ export const SwitchLogo = (changeImageAnimation: string) => {
       gsap.to(el, inAnimation);
       gsap.to('.secondary-logo', outAnimation);
     },
-    start: Math.min(vw(100), vh(100)) + ' top',
+    start: Math.min(vw(100), vh(50)) + ' top',
     end: 'bottom bottom',
   });
 };

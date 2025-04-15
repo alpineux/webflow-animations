@@ -5,6 +5,7 @@ import { getVariable, query } from '$utils/common';
 
 import { SwitchLogo } from '$animations/scroll';
 import { Fade, SlideFade } from '$animations/in';
+import { NavSlideDown } from '$animations/nav';
 
 export interface VariableTypes {
   duration: string;
@@ -34,4 +35,24 @@ window.Webflow.push(() => {
   */
   const changeImages = '[animate-scroll="change-image"]';
   if (query(changeImages)) SwitchLogo(changeImages);
+
+  /*
+    ANIMATIONS SCROLL
+  */
+  const navSlideDown = '[animate-nav="slide-transparent"]';
+  if (query(navSlideDown)) NavSlideDown(navSlideDown, variables);
+
+  /*
+    ANIMATIONS SCROLL
+  */
+  gsap.to('[animate-scroll="parallax"]', {
+    y: (i, el) => (1 - parseFloat('2')) * ScrollTrigger.maxScroll(window),
+    ease: 'none',
+    scrollTrigger: {
+      start: 0,
+      end: 'max',
+      invalidateOnRefresh: true,
+      scrub: 0,
+    },
+  });
 });
