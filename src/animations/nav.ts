@@ -1,28 +1,3 @@
-/*
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import type { VariableTypes } from '../index';
-
-export const NavSlideDown = (slideFadeAnimation: string, variables: VariableTypes) => {
-  gsap.set(slideFadeAnimation, { position: 'absolute', top: 0, width: '100%' });
-  gsap.set('.navigation', { backgroundColor: 'transparent' });
-  ScrollTrigger.batch(slideFadeAnimation, {
-    interval: 0.1,
-    batchMax: 4,
-    onEnter: (batch) =>
-      gsap.to(batch, {
-        opacity: 1,
-        y: 0,
-        stagger: variables.staggerDuration,
-        duration: variables.duration,
-        ease: 'power1.out',
-      }),
-    start: '20px bottom',
-    end: 'top top',
-  });
-};
-*/
-
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import type { VariableTypes } from '../index';
@@ -31,24 +6,11 @@ export const NavSlideDown = (slideFadeAnimation: string, variables: VariableType
   const vh = (coef: any) => window.innerHeight * (coef / 100);
   const vw = (coef: any) => window.innerWidth * (coef / 100);
 
-  // const inAnimation = {
-  //   // position: 'sticky',
-  //   // top: 0,
-  //   // width: '100%',
-  //   ease: 'power1.out',
-  // };
-  //
-  // const outAnimation = {
-  //   // position: 'absolute',
-  //   // width: '100%',
-  //   ease: 'power1.out',
-  // };
-
   ScrollTrigger.batch(slideFadeAnimation, {
     onEnter: (el) => {
       //gsap.to(slideFadeAnimation, inAnimation);
       gsap.to(slideFadeAnimation, {
-        backgroundColor: 'var(--background-colour--bg-secondary)',
+        backgroundColor: 'var(--_theme---background)',
         duration: 2,
         ease: 'elastic.out(1,0.5)',
       });
