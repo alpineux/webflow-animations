@@ -6,30 +6,37 @@ export const NavSlideDown = (slideFadeAnimation: string, variables: VariableType
   const vh = (coef: any) => window.innerHeight * (coef / 100);
   const vw = (coef: any) => window.innerWidth * (coef / 100);
 
+  const inAnimation = {
+    backgroundColor: 'red',
+    duration: 0.25,
+    ease: 'none',
+  };
+
   ScrollTrigger.batch(slideFadeAnimation, {
     onEnter: (el) => {
       //gsap.to(slideFadeAnimation, inAnimation);
       gsap.to(slideFadeAnimation, {
-        backgroundColor: 'var(--_theme---background)',
-        duration: 2,
-        ease: 'elastic.out(1,0.5)',
+        backgroundColor: 'red',
+        duration: 0.25,
+        ease: 'none',
       });
     },
     onLeaveBack: (el) => {
       gsap.to(slideFadeAnimation, {
         backgroundColor: 'transparent',
-        duration: 2,
-        ease: 'elastic.out(1,0.5)',
+        duration: 1,
+        ease: 'none',
       });
     },
     onEnterBack: (el) => {
       gsap.to(slideFadeAnimation, {
         backgroundColor: 'transparent',
-        duration: 2,
-        ease: 'elastic.out(1,0.5)',
+        duration: 1,
+        ease: 'none',
       });
     },
-    start: Math.min(vw(100), vh(50)) + ' top',
+    //start: Math.min(vw(100), vh(50)) + ' top',
+    start: 'top top',
     end: 'bottom bottom',
   });
 };

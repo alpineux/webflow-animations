@@ -7,6 +7,6 @@
       "$utils/*": ["src/utils/*"],
       "$animations/*": ["src/animations/*"]
     },
-    "types": ["@finsweet/ts-utils"]
+    "types": ["@finsweet/ts-utils", "jquery"]
   }
 }

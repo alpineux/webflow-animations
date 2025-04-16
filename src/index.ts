@@ -1,9 +1,8 @@
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
+import { gsap, ScrollTrigger } from 'gsap/all';
 
 import { getVariable, query } from '$utils/common';
 
-import { SwitchLogo } from '$animations/scroll';
+import { NavBackground, Parallax, SwitchLogo } from '$animations/scroll';
 import { Fade, SlideFade } from '$animations/in';
 import { NavSlideDown } from '$animations/nav';
 
@@ -21,6 +20,28 @@ window.Webflow.push(() => {
     staggerDuration: getVariable('_animations---stagger-duration'),
   };
 
+  $('.w-nav-button').on('click', function () {
+    // if (!$('.navigation').hasClass('has-bg')) {
+    //   $('.navigation').css('background-color', 'red');
+    // }
+    const nav = $('.navigation');
+    const isOpen = $(this).hasClass('w--open');
+    if (!isOpen && !nav.hasClass('has-bg')) {
+      gsap.to(nav, {
+        duration: 0.18,
+        //backgroundColor: 'rgba(0, 0, 0, 0)',
+        backgroundColor: getComputedStyle(document.body).getPropertyValue(
+          '--background-colour--bg-secondary'
+        ),
+      });
+    } else if (isOpen && !nav.hasClass('has-bg')) {
+      gsap.to(nav, {
+        duration: 0.18,
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+      });
+    }
+  });
+
   /*
     ANIMATIONS IN
   */
@@ -36,23 +57,15 @@ window.Webflow.push(() => {
   const changeImages = '[animate-scroll="change-image"]';
   if (query(changeImages)) SwitchLogo(changeImages);
 
+  const navBackground = '[animate-scroll="nav-background"]';
+  if (query(navBackground)) NavBackground(navBackground);
+
+  const parallax = '[animate-scroll="parallax"]';
+  if (query(parallax)) Parallax(parallax);
+
   /*
-    ANIMATIONS SCROLL
+    NAV SCROLL
   */
   const navSlideDown = '[animate-nav="slide-transparent"]';
   if (query(navSlideDown)) NavSlideDown(navSlideDown, variables);
-
-  /*
-    ANIMATIONS SCROLL
-  */
-  gsap.to('[animate-scroll="parallax"]', {
-    y: (i, el) => (1 - parseFloat('2')) * ScrollTrigger.maxScroll(window),
-    ease: 'none',
-    scrollTrigger: {
-      start: 0,
-      end: 'max',
-      invalidateOnRefresh: true,
-      scrub: 0,
-    },
-  });
 });
