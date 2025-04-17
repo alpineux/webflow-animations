@@ -7,8 +7,8 @@ import { Fade, SlideFade } from '$animations/in';
 import { NavSlideDown } from '$animations/nav';
 
 export interface VariableTypes {
-  duration: string;
-  staggerDuration: string;
+  duration: number;
+  staggerDuration: number;
 }
 
 window.Webflow ||= [];
@@ -22,8 +22,8 @@ window.Webflow.push(() => {
     // staggerDuration: getComputedStyle(document.body).getPropertyValue(
     //   '--_animations---animation-stagger'
     // ),
-    duration: '0.5',
-    staggerDuration: '0.1',
+    duration: 0.5,
+    staggerDuration: 0.1,
   };
 
   $('.w-nav-button').on('click', function () {
