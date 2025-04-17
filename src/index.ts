@@ -16,20 +16,20 @@ window.Webflow.push(() => {
   gsap.registerPlugin(ScrollTrigger);
 
   const variables: VariableTypes = {
-    duration: getVariable('_animations---duration'),
-    staggerDuration: getVariable('_animations---stagger-duration'),
+    duration: getVariable('--_animations---animation-duration') || '0.5',
+    staggerDuration: getVariable('--_animations---animation-stagger') || '0.1',
   };
 
   $('.w-nav-button').on('click', function () {
     // if (!$('.navigation').hasClass('has-bg')) {
     //   $('.navigation').css('background-color', 'red');
     // }
+
     const nav = $('.navigation');
     const isOpen = $(this).hasClass('w--open');
     if (!isOpen && !nav.hasClass('has-bg')) {
       gsap.to(nav, {
         duration: 0.18,
-        //backgroundColor: 'rgba(0, 0, 0, 0)',
         backgroundColor: getComputedStyle(document.body).getPropertyValue(
           '--background-colour--bg-secondary'
         ),
