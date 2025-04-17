@@ -16,12 +16,14 @@ window.Webflow.push(() => {
   gsap.registerPlugin(ScrollTrigger);
 
   const variables: VariableTypes = {
-    duration: getComputedStyle(document.body).getPropertyValue(
-      '--_animations---animation-duration'
-    ),
-    staggerDuration: getComputedStyle(document.body).getPropertyValue(
-      '--_animations---animation-stagger'
-    ),
+    // duration: getComputedStyle(document.body).getPropertyValue(
+    //   '--_animations---animation-duration'
+    // ),
+    // staggerDuration: getComputedStyle(document.body).getPropertyValue(
+    //   '--_animations---animation-stagger'
+    // ),
+    duration: '0.5',
+    staggerDuration: '0.1',
   };
 
   $('.w-nav-button').on('click', function () {
